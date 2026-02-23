@@ -8,10 +8,16 @@
     "build": "echo 'Static site - no build needed'",
     "start": "npm run dev"
   },
-  "keywords": ["portfolio", "developer", "html", "css", "javascript"],
+  "keywords": [
+    "portfolio",
+    "developer",
+    "html",
+    "css",
+    "javascript"
+  ],
   "author": "Louis Dev",
   "license": "MIT",
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.0"
   }
 }

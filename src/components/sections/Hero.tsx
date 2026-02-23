@@ -65,7 +65,7 @@ export default function Hero() {
               className="text-2xl lg:text-3xl text-gray-300 mb-6 h-12"
             >
               <div className="typewriter inline-block">
-                Développeur Junior
+                Développeur Full Stack
               </div>
             </motion.div>
 
