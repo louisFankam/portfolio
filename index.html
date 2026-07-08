@@ -265,16 +265,23 @@
         }
 
         .skill-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 12px;
+            width: 56px;
+            height: 56px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 1rem;
-            font-size: 1.5rem;
-            color: white;
+            color: var(--primary);
+        }
+
+        .skill-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--primary);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .skill-title {
@@ -946,6 +953,78 @@
             .skills-grid { grid-template-columns: 1fr; }
         }
 
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal {
+            background: var(--secondary);
+            border: 1px solid rgba(255,107,53,0.3);
+            border-radius: 1.2rem;
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .modal-icon {
+            width: 64px;
+            height: 48px;
+            margin: 0 auto 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--primary);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .modal h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .modal p {
+            color: #999;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        .modal-close {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .modal-close:hover {
+            background: var(--primary-hover);
+        }
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -989,7 +1068,7 @@
                 <div class="hero-text">
                     <h1>Bonjour, je suis <span class="gradient-text">Louis Fankam</span></h1>
                     <p>Développeur Full Stack passionné par le développement web et la sécurité informatique. Spécialisé en HTML, JavaScript, ReactJS et Laravel.</p>
-                    <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+                    <a href="cv-fankam_youaleu_louis.pdf" download class="btn btn-primary">Télécharger CV</a>
                     <a href="#contact" class="btn btn-secondary">Me contacter</a>
                 </div>
                 <div class="hero-image">
@@ -1021,22 +1100,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="SureFact - Gestion de Construction" class="project-img">
-                    <div class="project-content">
-                        <h3 class="project-title">SureFact - Gestion de Construction</h3>
-                        <p>Plateforme complète de gestion de projets de construction avec système de rôles. Architecture complète avec React et Node.js.</p>
-                        <div class="project-tags">
-                            <span class="tag">Express</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">JWT</span>
-                        </div>
-                        <div style="margin-top: 1rem;">
-                            <a href="https://github.com/solutions2is/solutions2is-contruction-management-webapp" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Voir sur GitHub →</a>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="project-card fade-in">
                     <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=300&fit=crop" alt="Pavin - Platform Municipale" class="project-img">
                     <div class="project-content">
@@ -1056,7 +1120,7 @@
                     </div>
                 </div>
                 <div class="project-card fade-in">
-                    <img src="/public/karia.png" alt="Karia - Orientation Scolaire" class="project-img">
+                    <img src="/public/Karia.png" alt="Karia - Orientation Scolaire" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">Karia - Orientation Scolaire</h3>
                         <p>Application web pour conseiller les jeunes élèves sur leur orientation scolaire. Plateforme éducative interactive avec outils d'aide à la décision et parcours personnalisés à l'aide d'une IA.</p>
@@ -1089,23 +1153,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop" alt="AI Assistant Frontend" class="project-img">
-                    <div class="project-content">
-                        <h3 class="project-title">Assistant IA Frontend</h3>
-                        <p>Interface d'assistant IA moderne avec thème sombre, composants UI avancés et architecture TypeScript. Projet de démonstration avec design responsive.</p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">Tailwind CSS</span>
-                            <span class="tag">IA</span>
-                            <span class="tag">Interface</span>
-                        </div>
-                        <div style="margin-top: 1rem;">
-                            <a href="#" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Projet Privé →</a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -1145,7 +1193,7 @@
             <div class="skills-grid">
                 <div class="skill-list-category fade-in">
                     <div class="skill-header">
-                        <div class="skill-icon">🎨</div>
+                        <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></div>
                         <div class="skill-title">Programmation Web</div>
                     </div>
                     <ul class="skill-list">
@@ -1159,7 +1207,7 @@
 
                 <div class="skill-list-category fade-in">
                     <div class="skill-header">
-                        <div class="skill-icon">⚙️</div>
+                        <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
                         <div class="skill-title">Langages de Programmation</div>
                     </div>
                     <ul class="skill-list">
@@ -1173,7 +1221,7 @@
 
                 <div class="skill-list-category fade-in">
                     <div class="skill-header">
-                        <div class="skill-icon">☁️</div>
+                        <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M18 10a5 5 0 0 0-9.7-2.3A4 4 0 0 0 5 15.5h13a3.5 3.5 0 0 0 0-7z"/><line x1="12" y1="7" x2="12" y2="10"/><line x1="9" y1="9" x2="15" y2="9"/></svg></div>
                         <div class="skill-title">Outils & Technologies</div>
                     </div>
                     <ul class="skill-list">
@@ -1187,7 +1235,7 @@
 
                 <div class="skill-list-category fade-in">
                     <div class="skill-header">
-                        <div class="skill-icon">🎯</div>
+                        <div class="skill-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
                         <div class="skill-title">Compétences Techniques</div>
                     </div>
                     <ul class="skill-list">
@@ -1201,7 +1249,7 @@
 
                 <div class="skill-list-category fade-in">
                     <div class="skill-header">
-                        <div class="skill-icon">🤝</div>
+                        <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
                         <div class="skill-title">Compétences Personnelles</div>
                     </div>
                     <ul class="skill-list">
@@ -1366,11 +1414,11 @@
             <h2 class="section-title">Contactez-moi</h2>
             <div class="contact-content">
                 <div class="contact-form fade-in">
-                    <form>
-                        <input type="text" placeholder="Votre nom" required>
-                        <input type="email" placeholder="Votre email" required>
-                        <input type="text" placeholder="Sujet" required>
-                        <textarea rows="5" placeholder="Votre message" required></textarea>
+                    <form action="https://formspree.io/f/mjgqdpzj" method="POST">
+                        <input type="text" name="name" placeholder="Votre nom" required>
+                        <input type="email" name="email" placeholder="Votre email" required>
+                        <input type="text" name="sujet" placeholder="Sujet" required>
+                        <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
                         <button type="submit">Envoyer le message</button>
                     </form>
                 </div>
@@ -1388,6 +1436,18 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-icon">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>Message envoyé !</h3>
+            <p>Merci, je te répondrai dans les plus brefs délais.</p>
+            <button class="modal-close" onclick="closeModal()">Fermer</button>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -1433,11 +1493,50 @@
             });
         });
 
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
+        // Form submission via Formspree
+        document.querySelector('form').addEventListener('submit', async function(e) {
             e.preventDefault();
-            alert('Message envoyé avec succès !');
-            this.reset();
+            const form = this;
+            const btn = form.querySelector('button');
+            const originalText = btn.textContent;
+            btn.textContent = 'Envoi en cours...';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    form.reset();
+                    showModal();
+                } else {
+                    btn.textContent = '✗ Erreur, réessaie';
+                }
+            } catch {
+                btn.textContent = '✗ Erreur, réessaie';
+            }
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 3000);
+        });
+
+        function showModal() {
+            document.getElementById('successModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
         });
 
         // Intersection Observer for animations
